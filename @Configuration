@@ -1,1 +1,15 @@
+@Configuration和@Component的区别
+
 @Configuration
+1.配置类必须以类的形式提供（不能是工厂返回的实例），允许通过生成子类在运行时增强（cglib动态代理）。
+2.配置类不能是final类（没法动态代理）。
+3.配置注解通常为了通过@Bean注解生成Spring容器管理的类。
+4.配置类必须是非本地的（即不能在方法中声明，不能是private）。
+5.任何嵌套配置类都必须声明为static。
+
+在@Configuration注解定义的bean方法中可以直接调用方法，不需要@Autowired注入后使用
+
+@Component
+没有通过cglib来代理@Bean方法的调用
+
+
